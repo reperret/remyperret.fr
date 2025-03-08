@@ -299,7 +299,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['coord_form'])) {
 
     <!-- Boutons de navigation -->
     <div class="btn-container">
-        <a class="btn-custom btn-white" href="download-vcard.php">
+        <a class="btn-custom btn-white" href="../download-vcard.php">
             <i class="fas fa-cloud-arrow-down"></i> Ajouter mes coordonnées
         </a>
         <button class="btn-custom btn-white" data-bs-toggle="modal" data-bs-target="#coordModal">
@@ -398,7 +398,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['coord_form'])) {
                 </div>
                 <!-- On centre l'image et la rend responsive -->
                 <div class="modal-body text-center">
-                    <img src="qrcard.png" alt="QR Code" class="img-fluid" style="display: block; margin: 0 auto;" />
+                    <img src="../qrcard.png" alt="QR Code" class="img-fluid" style="display: block; margin: 0 auto;" />
                     <p>Scannez ce QR Code pour ajouter directement mes coordonnées.</p>
                 </div>
             </div>
@@ -414,7 +414,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['coord_form'])) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="avatar.jpg" alt="Avatar" style="width: 100%; height: auto;" />
+                    <img src="../avatar.jpg" alt="Avatar" style="width: 100%; height: auto;" />
                 </div>
             </div>
         </div>
