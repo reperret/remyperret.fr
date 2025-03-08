@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 50">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&amp;display=swap');
+    .logo-text { 
+      font-family: 'Poppins', sans-serif; 
+      font-weight: 800; 
+      font-size: 24px;
+    }
+  </style>
+  <!-- Rectangle blanc avec coins arrondis -->
+  <rect x="0" y="6" width="40" height="40" fill="#ffffff" rx="6" ry="6" />
+  <!-- Texte "RP" en noir, abaissé davantage -->
+  <text x="20" y="27" text-anchor="middle" dominant-baseline="middle" class="logo-text" fill="#000000">RP</text>
+  <!-- Texte "Rémy PERRET" en blanc, abaissé davantage -->
+  <text x="50" y="27" dominant-baseline="middle" class="logo-text" fill="#ffffff">Rémy PERRET</text>
+</svg>

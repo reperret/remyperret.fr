@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Rémy PERRET
+N:PERRET;Rémy;;;
+TITLE:Ingénieur en informatique et réseaux
+TEL;TYPE=mobile,voice:+33631023304
+EMAIL:reperret@gmail.com
+URL:https://www.remyperret.fr
+ADR;TYPE=work:;;Lyon;;69008;France
+PHOTO;TYPE=JPEG:https://www.remyperret.fr/avatar.jpg
+END:VCARD
