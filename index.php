@@ -215,467 +215,467 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <style>
-        :root {
-            /* Couleurs principales */
-            --black: #000;
-            --white: #fff;
-            --dark-gray: #111;
-            --text-dark: #000;
-            --text-light: #fff;
-            --accent-color: #888;
-            /* gris subtil pour accents */
+    :root {
+        /* Couleurs principales */
+        --black: #000;
+        --white: #fff;
+        --dark-gray: #111;
+        --text-dark: #000;
+        --text-light: #fff;
+        --accent-color: #888;
+        /* gris subtil pour accents */
 
-            /* Taille fixe pour la navbar */
-            --navbar-height: 120px;
-        }
+        /* Taille fixe pour la navbar */
+        --navbar-height: 120px;
+    }
 
-        /* RESET DE BASE */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* RESET DE BASE */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--black);
-            color: var(--text-light);
-            scroll-behavior: smooth;
-        }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--black);
+        color: var(--text-light);
+        scroll-behavior: smooth;
+    }
 
-        a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-
-        /* Ajustement des marges internes du carrousel pour éviter que le contenu ne chevauche les contrôles */
-        #reviewsCarousel .carousel-inner {
-            padding: 0 50px;
-            /* espace horizontal autour des items */
-        }
-
-        /* Optionnel : réduire la largeur des boutons de contrôle pour qu'ils ne couvrent pas trop le contenu */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
-        }
-
-        /* Si nécessaire, ajouter un fond transparent ou une ombre portée pour les flèches */
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 50%;
-        }
+    a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
 
 
-        /* Style du carrousel avis Google */
-        #google-reviews .card {
-            border: none;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+    /* Ajustement des marges internes du carrousel pour éviter que le contenu ne chevauche les contrôles */
+    #reviewsCarousel .carousel-inner {
+        padding: 0 50px;
+        /* espace horizontal autour des items */
+    }
 
-        #google-reviews .card-body {
-            padding: 20px;
-        }
+    /* Optionnel : réduire la largeur des boutons de contrôle pour qu'ils ne couvrent pas trop le contenu */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 5%;
+    }
+
+    /* Si nécessaire, ajouter un fond transparent ou une ombre portée pour les flèches */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 50%;
+    }
 
 
-        .portfolio-description {
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-            /* Ajoute 30px de marge en bas */
-            text-align: justify;
-            font-size: 1rem;
-            line-height: 1.5;
+    /* Style du carrousel avis Google */
+    #google-reviews .card {
+        border: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
 
-        }
+    #google-reviews .card-body {
+        padding: 20px;
+    }
 
 
-        a:hover {
-            color: #ccc;
-        }
+    .portfolio-description {
+        max-width: 800px;
+        margin: 0 auto 30px auto;
+        /* Ajoute 30px de marge en bas */
+        text-align: justify;
+        font-size: 1rem;
+        line-height: 1.5;
 
-        /* NAVBAR */
-        .navbar {
-            background: linear-gradient(90deg, #000, #333);
-            border: none;
-            min-height: var(--navbar-height);
-            position: relative;
-            z-index: 10;
-        }
+    }
 
-        /* Logo SVG personnalisé */
-        .navbar-brand {
-            margin-left: 1rem;
-        }
 
+    a:hover {
+        color: #ccc;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        background: linear-gradient(90deg, #000, #333);
+        border: none;
+        min-height: var(--navbar-height);
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Logo SVG personnalisé */
+    .navbar-brand {
+        margin-left: 1rem;
+    }
+
+    .navbar-brand object {
+        height: calc(var(--navbar-height) - 40px);
+        width: auto;
+        display: block;
+    }
+
+    @media (max-width: 576px) {
         .navbar-brand object {
-            height: calc(var(--navbar-height) - 40px);
-            width: auto;
-            display: block;
+            max-width: 200px;
+            /* Ajustez cette valeur selon vos besoins */
+            height: auto;
         }
-
-        @media (max-width: 576px) {
-            .navbar-brand object {
-                max-width: 200px;
-                /* Ajustez cette valeur selon vos besoins */
-                height: auto;
-            }
-        }
-
-        .navbar-toggler {
-            border: none;
-            background: none;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        .navbar-toggler:focus,
-        .navbar-toggler:active {
-            outline: 0 !important;
-            box-shadow: none !important;
-        }
-
-        .navbar-toggler-icon {
-            display: none;
-        }
-
-        .nav-icon {
-            width: 30px;
-            height: 22px;
-            position: relative;
-        }
-
-        .nav-icon span {
-            background: var(--white);
-            display: block;
-            height: 3px;
-            width: 100%;
-            border-radius: 3px;
-            position: absolute;
-            left: 0;
-            transition: 0.3s;
-        }
-
-        .nav-icon span:nth-child(1) {
-            top: 0;
-        }
-
-        .nav-icon span:nth-child(2) {
-            top: 9px;
-        }
-
-        .nav-icon span:nth-child(3) {
-            top: 18px;
-        }
-
-        .nav-icon.is-open span:nth-child(1) {
-            transform: rotate(45deg);
-            top: 9px;
-        }
-
-        .nav-icon.is-open span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .nav-icon.is-open span:nth-child(3) {
-            transform: rotate(-45deg);
-            top: 9px;
-        }
-
-        .nav-link {
-            margin: 0 10px;
-            color: var(--white) !important;
-        }
-
-        .nav-link:hover {
-            color: #ccc !important;
-        }
-
-
-
-        /* HERO SECTION */
-        /* HERO SECTION - Dégradé très subtil */
-        #hero {
-            position: relative;
-            margin-top: calc(var(--navbar-height) - 150px);
-            padding: 80px 20px 40px;
-            text-align: center;
-            background:
-                linear-gradient(180deg,
-                    #000 0%,
-                    /* Noir en haut */
-                    #111 40%,
-                    /* Très légèrement plus clair */
-                    #111 60%,
-                    /* Centre légèrement plus clair */
-                    #000 100%
-                    /* Noir en bas */
-                );
-        }
-
-
-
-        #hero h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-        #hero p {
-            font-size: 1.25rem;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-
-        .hero-avatar img {
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            border: 2px solid var(--white);
-        }
-
-
-        .hero-icons {
-            margin-top: 10px;
-            /* Ajuste cet espace si nécessaire */
-        }
-
-        .hero-icons a {
-            margin: 0 5px;
-        }
-
-        .hero-icons img {
-            width: 22px;
-            height: 22px;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-        }
-
-        .hero-icons img:hover {
-            filter: grayscale(0);
-        }
-
-
-
-        #portfolio {
-            padding-top: 0px;
-            /* Au lieu de 80px */
-        }
-
-
-        .hero-avatar {
-            display: inline-block;
-            margin-top: 20px;
-            /* Par exemple, réduis à 10px si nécessaire */
-            margin-bottom: 10px;
-            /* Réduit l'espace sous l'avatar */
-        }
-
-        .portfolio-separator {
-            width: 50%;
-            margin: 30px auto;
-            /* Réduit l'espacement global, notamment la marge supérieure */
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
-
-
-        /* SECTIONS */
-        section {
-            padding: 80px 20px;
-        }
-
-        /* TITRES DE SECTION */
-        .section-title {
-            text-transform: uppercase;
-            font-weight: 600;
-            position: relative;
-            margin-bottom: 1rem;
-        }
-
-        .section-title::before {
-            content: attr(data-text);
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            color: rgba(255, 255, 255, 0.1);
-            z-index: -1;
-            filter: blur(1px);
-        }
-
-        /* PORTFOLIO (Fancybox) */
-        #portfolio {
-            background-color: var(--black);
-            color: var(--white);
-        }
-
-        #portfolio .portfolio-item {
-            overflow: hidden;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #portfolio .portfolio-item img {
-            width: 100%;
-            display: block;
-            border-radius: 8px;
-        }
-
-        #portfolio .portfolio-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
-        }
-
-        /* SERVICES (FOND BLANC) */
-        #services,
-        #google-reviews {
-            background-color: var(--white);
-            color: var(--text-dark);
-        }
-
-        #services .card {
-            background-color: #f7f7f7;
-            border: none;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #services .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
-        }
-
-        #services .card-body {
-            text-align: center;
-        }
-
-        /* Titres de services en majuscules et gras, même police que les titres de section */
-        .service-title {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 900;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            color: #888;
-        }
-
-        .emoji {
-            font-size: 1.4rem;
-            margin-right: 6px;
-        }
-
-
-
-
-
-
-        /* CONTACT (FOND NOIR) */
-        #contact {
-            background-color: var(--black);
-            color: var(--white);
-        }
-
-        #contact .form-control {
-            background-color: var(--dark-gray);
-            border: 1px solid #333;
-            color: var(--white);
-            border-radius: 4px;
-            padding: 12px 16px;
-        }
-
-        #contact .form-control:focus {
-            border-color: var(--accent-color);
-            box-shadow: none;
-        }
-
-        #contact .btn {
-            border-radius: 4px;
-            padding: 10px 30px;
-            background-color: var(--white);
-            border: none;
-            transition: background-color 0.3s ease;
-            color: var(--black);
-            font-weight: 600;
-        }
-
-        #contact .btn:hover {
-            background-color: #ccc;
-        }
-
-        #contact ::placeholder {
-            color: #999;
-            opacity: 0.8;
-        }
-
-        footer {
-            background-color: var(--black);
-            color: var(--white);
-            text-align: center;
-            padding: 20px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        footer p {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin: 0;
-        }
-
-        /* Pour l'icône LinkedIn et l'icône CV */
-        .linkedin-icon,
-        .cv-icon {
-            width: 22px;
-            /* Taille petite */
-            height: 22px;
-            filter: grayscale(100%);
-            transition: filter 0.3s ease;
-        }
-
-        .linkedin-icon:hover,
-        .cv-icon:hover {
-            filter: grayscale(0);
-        }
-
-
-
-        .linkedin-icon {
-            width: 22px;
-            /* Taille ajustée */
-            height: 22px;
-            filter: grayscale(100%);
-            /* Icône noir et blanc */
-            transition: filter 0.3s ease;
-        }
-
-        .linkedin-icon:hover {
-            filter: grayscale(0);
-            /* Recoloré au survol */
-        }
-
-
-
-        /* Toast Notification (centré en haut) */
-        .toast-container {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1050;
-            padding: 1rem;
-        }
+    }
+
+    .navbar-toggler {
+        border: none;
+        background: none;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:active {
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .navbar-toggler-icon {
+        display: none;
+    }
+
+    .nav-icon {
+        width: 30px;
+        height: 22px;
+        position: relative;
+    }
+
+    .nav-icon span {
+        background: var(--white);
+        display: block;
+        height: 3px;
+        width: 100%;
+        border-radius: 3px;
+        position: absolute;
+        left: 0;
+        transition: 0.3s;
+    }
+
+    .nav-icon span:nth-child(1) {
+        top: 0;
+    }
+
+    .nav-icon span:nth-child(2) {
+        top: 9px;
+    }
+
+    .nav-icon span:nth-child(3) {
+        top: 18px;
+    }
+
+    .nav-icon.is-open span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 9px;
+    }
+
+    .nav-icon.is-open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-icon.is-open span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 9px;
+    }
+
+    .nav-link {
+        margin: 0 10px;
+        color: var(--white) !important;
+    }
+
+    .nav-link:hover {
+        color: #ccc !important;
+    }
+
+
+
+    /* HERO SECTION */
+    /* HERO SECTION - Dégradé très subtil */
+    #hero {
+        position: relative;
+        margin-top: calc(var(--navbar-height) - 150px);
+        padding: 80px 20px 40px;
+        text-align: center;
+        background:
+            linear-gradient(180deg,
+                #000 0%,
+                /* Noir en haut */
+                #111 40%,
+                /* Très légèrement plus clair */
+                #111 60%,
+                /* Centre légèrement plus clair */
+                #000 100%
+                /* Noir en bas */
+            );
+    }
+
+
+
+    #hero h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--white);
+    }
+
+    #hero p {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+        color: var(--white);
+    }
+
+
+    .hero-avatar img {
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        border: 2px solid var(--white);
+    }
+
+
+    .hero-icons {
+        margin-top: 10px;
+        /* Ajuste cet espace si nécessaire */
+    }
+
+    .hero-icons a {
+        margin: 0 5px;
+    }
+
+    .hero-icons img {
+        width: 22px;
+        height: 22px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+    }
+
+    .hero-icons img:hover {
+        filter: grayscale(0);
+    }
+
+
+
+    #portfolio {
+        padding-top: 0px;
+        /* Au lieu de 80px */
+    }
+
+
+    .hero-avatar {
+        display: inline-block;
+        margin-top: 20px;
+        /* Par exemple, réduis à 10px si nécessaire */
+        margin-bottom: 10px;
+        /* Réduit l'espace sous l'avatar */
+    }
+
+    .portfolio-separator {
+        width: 50%;
+        margin: 30px auto;
+        /* Réduit l'espacement global, notamment la marge supérieure */
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+    }
+
+
+    /* SECTIONS */
+    section {
+        padding: 80px 20px;
+    }
+
+    /* TITRES DE SECTION */
+    .section-title {
+        text-transform: uppercase;
+        font-weight: 600;
+        position: relative;
+        margin-bottom: 1rem;
+    }
+
+    .section-title::before {
+        content: attr(data-text);
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        color: rgba(255, 255, 255, 0.1);
+        z-index: -1;
+        filter: blur(1px);
+    }
+
+    /* PORTFOLIO (Fancybox) */
+    #portfolio {
+        background-color: var(--black);
+        color: var(--white);
+    }
+
+    #portfolio .portfolio-item {
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #portfolio .portfolio-item img {
+        width: 100%;
+        display: block;
+        border-radius: 8px;
+    }
+
+    #portfolio .portfolio-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    }
+
+    /* SERVICES (FOND BLANC) */
+    #services,
+    #google-reviews {
+        background-color: var(--white);
+        color: var(--text-dark);
+    }
+
+    #services .card {
+        background-color: #f7f7f7;
+        border: none;
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #services .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    #services .card-body {
+        text-align: center;
+    }
+
+    /* Titres de services en majuscules et gras, même police que les titres de section */
+    .service-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 900;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        color: #888;
+    }
+
+    .emoji {
+        font-size: 1.4rem;
+        margin-right: 6px;
+    }
+
+
+
+
+
+
+    /* CONTACT (FOND NOIR) */
+    #contact {
+        background-color: var(--black);
+        color: var(--white);
+    }
+
+    #contact .form-control {
+        background-color: var(--dark-gray);
+        border: 1px solid #333;
+        color: var(--white);
+        border-radius: 4px;
+        padding: 12px 16px;
+    }
+
+    #contact .form-control:focus {
+        border-color: var(--accent-color);
+        box-shadow: none;
+    }
+
+    #contact .btn {
+        border-radius: 4px;
+        padding: 10px 30px;
+        background-color: var(--white);
+        border: none;
+        transition: background-color 0.3s ease;
+        color: var(--black);
+        font-weight: 600;
+    }
+
+    #contact .btn:hover {
+        background-color: #ccc;
+    }
+
+    #contact ::placeholder {
+        color: #999;
+        opacity: 0.8;
+    }
+
+    footer {
+        background-color: var(--black);
+        color: var(--white);
+        text-align: center;
+        padding: 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    footer p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: 0;
+    }
+
+    /* Pour l'icône LinkedIn et l'icône CV */
+    .linkedin-icon,
+    .cv-icon {
+        width: 22px;
+        /* Taille petite */
+        height: 22px;
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+    }
+
+    .linkedin-icon:hover,
+    .cv-icon:hover {
+        filter: grayscale(0);
+    }
+
+
+
+    .linkedin-icon {
+        width: 22px;
+        /* Taille ajustée */
+        height: 22px;
+        filter: grayscale(100%);
+        /* Icône noir et blanc */
+        transition: filter 0.3s ease;
+    }
+
+    .linkedin-icon:hover {
+        filter: grayscale(0);
+        /* Recoloré au survol */
+    }
+
+
+
+    /* Toast Notification (centré en haut) */
+    .toast-container {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1050;
+        padding: 1rem;
+    }
     </style>
 </head>
 
@@ -715,7 +715,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- HERO SECTION -->
     <section id="hero" data-aos="fade-up">
         <div class="container">
-            <h1>Développeur à Lyon</h1>
+            <h1>Développeur web à Lyon</h1>
             <h2>Sites web, apps, logiciels</h2>
             <div class="hero-avatar">
                 <img src="avatar.jpg" alt="Avatar" />
@@ -1015,45 +1015,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Fancybox JS -->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-out',
-            once: true,
-        });
+    AOS.init({
+        duration: 1000,
+        easing: 'ease-out',
+        once: true,
+    });
 
-        // MENU HAMBURGER : animer l'icône
-        const navToggle = document.getElementById('navToggle');
-        navToggle.addEventListener('click', function() {
-            const navIcon = this.querySelector('.nav-icon');
-            navIcon.classList.toggle('is-open');
-        });
+    // MENU HAMBURGER : animer l'icône
+    const navToggle = document.getElementById('navToggle');
+    navToggle.addEventListener('click', function() {
+        const navIcon = this.querySelector('.nav-icon');
+        navIcon.classList.toggle('is-open');
+    });
 
-        // Initialiser Fancybox avec fonction de rappel pour la légende
-        document.addEventListener("DOMContentLoaded", () => {
-            Fancybox.bind("[data-fancybox]", {
-                caption: function(instance, item) {
-                    return item.$trigger ? item.$trigger.getAttribute("data-caption") : "";
-                }
-            });
-        });
-
-        // Fonction pour afficher un toast de notification
-        function showToast(message, type) {
-            const toastEl = document.getElementById('toast');
-            const toastMessage = document.getElementById('toast-message');
-
-            if (type === 'success') {
-                toastEl.classList.add('bg-success');
-                toastEl.classList.remove('bg-danger');
-            } else {
-                toastEl.classList.add('bg-danger');
-                toastEl.classList.remove('bg-success');
+    // Initialiser Fancybox avec fonction de rappel pour la légende
+    document.addEventListener("DOMContentLoaded", () => {
+        Fancybox.bind("[data-fancybox]", {
+            caption: function(instance, item) {
+                return item.$trigger ? item.$trigger.getAttribute("data-caption") : "";
             }
-            toastMessage.innerText = message;
+        });
+    });
 
-            const toast = new bootstrap.Toast(toastEl);
-            toast.show();
+    // Fonction pour afficher un toast de notification
+    function showToast(message, type) {
+        const toastEl = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+
+        if (type === 'success') {
+            toastEl.classList.add('bg-success');
+            toastEl.classList.remove('bg-danger');
+        } else {
+            toastEl.classList.add('bg-danger');
+            toastEl.classList.remove('bg-success');
         }
+        toastMessage.innerText = message;
+
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+    }
     </script>
 
     <?php
@@ -1083,13 +1083,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
+    window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-XXXXX-Y');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXX-Y');
     </script>
 
 
