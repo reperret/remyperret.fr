@@ -133,156 +133,156 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['coord_form'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
     <style>
-        /* Remise à zéro globale */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* Remise à zéro globale */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Poppins", sans-serif;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-        }
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+    }
 
-        /* Logo avec petite marge en haut */
-        .logo {
-            margin: 25px 0 0 0;
-            /* modifiez la valeur si besoin plus ou moins de marge */
-            padding: 0;
-        }
+    /* Logo avec petite marge en haut */
+    .logo {
+        margin: 25px 0 0 0;
+        /* modifiez la valeur si besoin plus ou moins de marge */
+        padding: 0;
+    }
 
-        .logo object {
-            width: 180px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
+    .logo object {
+        width: 180px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
 
-        /* Avatar cliquable */
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            margin: 10px auto;
-            overflow: hidden;
-            cursor: pointer;
-        }
+    /* Avatar cliquable */
+    .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        margin: 10px auto;
+        overflow: hidden;
+        cursor: pointer;
+    }
 
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-        /* Boutons */
-        .btn-container {
-            width: 100%;
-            max-width: 350px;
-            margin: 10px auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+    /* Boutons */
+    .btn-container {
+        width: 100%;
+        max-width: 350px;
+        margin: 10px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-        .btn-custom {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: #fff;
-            background: #000;
-            border: 2px solid #fff;
-            border-radius: 8px;
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
-        }
+    .btn-custom {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #fff;
+        background: #000;
+        border: 2px solid #fff;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
 
-        .btn-custom:hover {
-            background: #fff;
-            color: #000;
-        }
+    .btn-custom:hover {
+        background: #fff;
+        color: #000;
+    }
 
-        .btn-white {
-            background: #fff;
-            color: #000;
-            border: 2px solid #000;
-        }
+    .btn-white {
+        background: #fff;
+        color: #000;
+        border: 2px solid #000;
+    }
 
-        .btn-sep {
-            margin-top: 8px;
-        }
+    .btn-sep {
+        margin-top: 8px;
+    }
 
-        /* Zone secrète (invisible) en bas */
-        .secret-zone {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            opacity: 0;
-            cursor: pointer;
-            z-index: 1000;
-        }
+    /* Zone secrète (invisible) en bas */
+    .secret-zone {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 50px;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 1000;
+    }
 
-        /* Modals */
+    /* Modals */
+    .modal-dialog {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (min-width: 768px) {
         .modal-dialog {
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            max-width: 30%;
         }
+    }
 
-        @media (min-width: 768px) {
-            .modal-dialog {
-                max-width: 30%;
-            }
+    @media (max-width: 767px) {
+        .modal-dialog {
+            max-width: 100%;
+            height: 100vh;
         }
+    }
 
-        @media (max-width: 767px) {
-            .modal-dialog {
-                max-width: 100%;
-                height: 100vh;
-            }
-        }
+    .modal-content {
+        width: 100%;
+        height: auto;
+        background-color: #fff !important;
+        color: #000;
+        border: none;
+        border-radius: 0;
+    }
 
-        .modal-content {
-            width: 100%;
-            height: auto;
-            background-color: #fff !important;
-            color: #000;
-            border: none;
-            border-radius: 0;
-        }
+    .modal-header .btn-close {
+        filter: none;
+    }
 
-        .modal-header .btn-close {
-            filter: none;
-        }
+    .form-control {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 4px;
+    }
 
-        .form-control {
-            background-color: #fff;
-            color: #000;
-            border: 1px solid #000;
-            border-radius: 4px;
-        }
-
-        .modal-body .btn-primary {
-            background-color: #000;
-            color: #fff;
-            border: 2px solid #fff;
-        }
+    .modal-body .btn-primary {
+        background-color: #000;
+        color: #fff;
+        border: 2px solid #fff;
+    }
     </style>
 </head>
 
@@ -294,7 +294,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['coord_form'])) {
 
     <!-- Avatar (modal photo) -->
     <div class="avatar" data-bs-toggle="modal" data-bs-target="#avatarModal">
-        <img src="avatar.jpg" alt="Avatar" />
+        <img src="../avatar.jpg" alt="Avatar" />
     </div>
 
     <!-- Boutons de navigation -->
@@ -338,48 +338,48 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['coord_form'])) {
                 </div>
                 <div class="modal-body">
                     <?php if (isset($_POST['coord_form'])): ?>
-                        <?php if ($coordResult === "success"): ?>
-                            <p class="text-success">Email envoyé avec succès !</p>
-                            <div id="qrcode" style="margin:20px auto;"></div>
-                            <p>Si je suis avec vous, faites moi scannez cela !</p>
-                        <?php elseif ($coordResult === "danger"): ?>
-                            <p class="text-danger">
-                                Erreur : Impossible d'envoyer votre demande..
-                            </p>
-                            <?php goto form_display; ?>
-                        <?php elseif ($coordResult === "invalid"): ?>
-                            <p class="text-danger">
-                                Erreur : Veuillez vérifier vos informations.
-                            </p>
-                            <?php goto form_display; ?>
-                        <?php endif; ?>
+                    <?php if ($coordResult === "success"): ?>
+                    <p class="text-success">Email envoyé avec succès !</p>
+                    <div id="qrcode" style="margin:20px auto;"></div>
+                    <p>Si je suis avec vous, faites moi scannez cela !</p>
+                    <?php elseif ($coordResult === "danger"): ?>
+                    <p class="text-danger">
+                        Erreur : Impossible d'envoyer votre demande..
+                    </p>
+                    <?php goto form_display; ?>
+                    <?php elseif ($coordResult === "invalid"): ?>
+                    <p class="text-danger">
+                        Erreur : Veuillez vérifier vos informations.
+                    </p>
+                    <?php goto form_display; ?>
+                    <?php endif; ?>
                     <?php else: ?>
-                        <?php form_display: ?>
-                        <form method="post" action="">
-                            <div class="mb-3 text-start">
-                                <label for="prenom" class="form-label">Prénom</label>
-                                <input type="text" class="form-control" id="prenom" name="prenom" required />
-                            </div>
-                            <div class="mb-3 text-start">
-                                <label for="nom" class="form-label">Nom</label>
-                                <input type="text" class="form-control" id="nom" name="nom" required />
-                            </div>
-                            <div class="mb-3 text-start">
-                                <label for="mobile" class="form-label">Mobile</label>
-                                <input type="text" class="form-control" id="mobile" name="mobile" required />
-                            </div>
-                            <div class="mb-3 text-start">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required />
-                            </div>
-                            <!-- Champs cachés anti-spam -->
-                            <input type="hidden" name="coord_form" value="1" />
-                            <input type="hidden" name="form_start_time" value="<?= time(); ?>" />
-                            <input type="text" name="honeypot" style="display:none;" />
-                            <button type="submit" class="btn btn-primary w-100">
-                                Envoyer
-                            </button>
-                        </form>
+                    <?php form_display: ?>
+                    <form method="post" action="">
+                        <div class="mb-3 text-start">
+                            <label for="prenom" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="prenom" name="prenom" required />
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label for="nom" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="nom" name="nom" required />
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label for="mobile" class="form-label">Mobile</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile" required />
+                        </div>
+                        <div class="mb-3 text-start">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required />
+                        </div>
+                        <!-- Champs cachés anti-spam -->
+                        <input type="hidden" name="coord_form" value="1" />
+                        <input type="hidden" name="form_start_time" value="<?= time(); ?>" />
+                        <input type="text" name="honeypot" style="display:none;" />
+                        <button type="submit" class="btn btn-primary w-100">
+                            Envoyer
+                        </button>
+                    </form>
                     <?php endif; ?>
                 </div>
             </div>
@@ -423,25 +423,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['coord_form'])) {
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Réouverture automatique du modal si un envoi de formulaire a eu lieu
-        <?php if (isset($_POST['coord_form'])): ?>
-            let coordModal = new bootstrap.Modal(document.getElementById('coordModal'));
-            coordModal.show();
-        <?php endif; ?>
+    // Réouverture automatique du modal si un envoi de formulaire a eu lieu
+    <?php if (isset($_POST['coord_form'])): ?>
+    let coordModal = new bootstrap.Modal(document.getElementById('coordModal'));
+    coordModal.show();
+    <?php endif; ?>
 
-        // Génération du QR Code dans la page "M'envoyer vos coordonnées" (si email envoyé avec succès)
-        <?php if ($coordResult === "success" && !empty($vcardString)): ?>
-            document.addEventListener("DOMContentLoaded", function() {
-                new QRCode(document.getElementById("qrcode"), {
-                    text: <?php echo json_encode($vcardString); ?>,
-                    width: 300,
-                    height: 300,
-                    colorDark: "#000",
-                    colorLight: "#fff",
-                    correctLevel: QRCode.CorrectLevel.L
-                });
-            });
-        <?php endif; ?>
+    // Génération du QR Code dans la page "M'envoyer vos coordonnées" (si email envoyé avec succès)
+    <?php if ($coordResult === "success" && !empty($vcardString)): ?>
+    document.addEventListener("DOMContentLoaded", function() {
+        new QRCode(document.getElementById("qrcode"), {
+            text: <?php echo json_encode($vcardString); ?>,
+            width: 300,
+            height: 300,
+            colorDark: "#000",
+            colorLight: "#fff",
+            correctLevel: QRCode.CorrectLevel.L
+        });
+    });
+    <?php endif; ?>
     </script>
 </body>
 
