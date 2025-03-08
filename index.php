@@ -715,7 +715,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- HERO SECTION -->
     <section id="hero" data-aos="fade-up">
         <div class="container">
-            <h1>Développeur .. à Lyon</h1>
+            <h1>Développeur à Lyon</h1>
             <h2>Sites web, apps, logiciels</h2>
             <div class="hero-avatar">
                 <img src="avatar.jpg" alt="Avatar" />
